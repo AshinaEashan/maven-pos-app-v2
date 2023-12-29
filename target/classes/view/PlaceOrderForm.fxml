@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="placeOrderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="711.0" prefWidth="1003.0" style="-fx-background-color: #00d084;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PlaceOrderFormController">
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1085.0" minWidth="10.0" prefWidth="1072.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="367.0" minHeight="10.0" prefHeight="297.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="396.0" minHeight="10.0" prefHeight="370.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane GridPane.columnIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="595.0" minWidth="10.0" prefWidth="559.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="534.0" minWidth="10.0" prefWidth="520.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#BackButtonOnAction" prefHeight="52.0" prefWidth="57.0" style="-fx-background-color: #00d084; -fx-background-radius: 90;">
+                     <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/back_Icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Button>
+                  <JFXComboBox fx:id="customerID" prefHeight="43.0" prefWidth="231.0" promptText="Customer ID" style="-fx-background-color: #e7e7e7;" GridPane.rowIndex="1">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </JFXComboBox>
+                  <JFXComboBox fx:id="itemCode" layoutX="10.0" layoutY="116.0" prefHeight="43.0" prefWidth="231.0" promptText="Item Code" style="-fx-background-color: #e7e7e7;" GridPane.rowIndex="2">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </JFXComboBox>
+                  <JFXTextField fx:id="customerName" prefHeight="42.0" prefWidth="363.0" promptText="Name" style="-fx-background-color: #e7e7e7;" GridPane.rowIndex="1">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets left="240.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </JFXTextField>
+                  <JFXTextField fx:id="itemDesc" layoutX="250.0" layoutY="115.0" prefHeight="42.0" prefWidth="363.0" promptText="Description" style="-fx-background-color: #e7e7e7;" GridPane.rowIndex="2">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets left="240.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </JFXTextField>
+                  <Label fx:id="orderID" prefHeight="26.0" prefWidth="83.0" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="230.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="unitPrice" prefHeight="43.0" prefWidth="158.0" promptText="Unit Price" style="-fx-background-color: #e7e7e7;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="10.0" right="320.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </JFXTextField>
+                  <JFXTextField fx:id="qty" prefHeight="43.0" prefWidth="231.0" promptText="Buying QTY" style="-fx-background-color: #e7e7e7;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="165.0" right="190.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </JFXTextField>
+                  <JFXButton onAction="#AddToCartOnAction" prefHeight="37.0" prefWidth="126.0" style="-fx-background-color: E0DA51;" text="Add to Cart" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets right="20.0" />
+                     </GridPane.margin>
+                  </JFXButton>
+                  <Button mnemonicParsing="false" onAction="#RefreshButtonOnAction" prefHeight="39.0" prefWidth="65.0" style="-fx-background-color: #00d084; -fx-background-radius: 20;" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                     <graphic>
+                        <ImageView fitHeight="46.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/refresh_icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </Button>
+               </children>
+            </GridPane>
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="337.0" minHeight="10.0" prefHeight="325.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="170.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <JFXTreeTableView fx:id="tblCart">
+                     <columns>
+                        <TreeTableColumn fx:id="orderCode" prefWidth="111.0" text="Code" />
+                        <TreeTableColumn fx:id="orderDesc" prefWidth="406.0" text="Description" />
+                        <TreeTableColumn fx:id="orderQty" prefWidth="126.0" text="QTY" />
+                        <TreeTableColumn fx:id="orderAmount" prefWidth="194.0" text="Amount" />
+                        <TreeTableColumn fx:id="orderOption" prefWidth="144.0" text="Option" />
+                     </columns>
+                  </JFXTreeTableView>
+                  <JFXButton onAction="#PlaceOrderOnAction" prefHeight="37.0" prefWidth="126.0" style="-fx-background-color: #e9abab;" text="Place Order" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets right="20.0" />
+                     </GridPane.margin>
+                  </JFXButton>
+                  <Label prefHeight="36.0" prefWidth="55.0" text="Total :" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="45.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="totLabel" layoutX="55.0" layoutY="342.0" prefHeight="36.0" prefWidth="154.0" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="100.0" />
+                     </GridPane.margin>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>

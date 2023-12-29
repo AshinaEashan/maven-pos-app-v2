@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane fx:id="ordersPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="693.0" prefWidth="1039.0" style="-fx-background-color: #00d084;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrdersFormController">
+   <center>
+      <GridPane prefHeight="631.0" prefWidth="1131.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="984.0" minWidth="10.0" prefWidth="976.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="71.0" minHeight="0.0" prefHeight="4.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="671.0" minHeight="10.0" prefHeight="671.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="342.0" minHeight="0.0" prefHeight="1.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane prefHeight="604.0" prefWidth="995.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="257.0" minHeight="0.0" prefHeight="111.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="398.0" minHeight="10.0" prefHeight="290.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="283.0" minHeight="10.0" prefHeight="245.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#BackButtonOnAction" prefHeight="52.0" prefWidth="57.0" style="-fx-background-color: #00d084; -fx-background-radius: 90;" GridPane.valignment="TOP">
+                     <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/back_Icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#RefreshButtonOnAction" prefHeight="39.0" prefWidth="65.0" style="-fx-background-color: #00d084; -fx-background-radius: 20;" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+                     <graphic>
+                        <ImageView fitHeight="46.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/refresh_icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </Button>
+                  <JFXTextField fx:id="orderIdSearch" prefHeight="43.0" prefWidth="158.0" promptText="Enter Order ID" style="-fx-background-color: #e7e7e7;" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets bottom="10.0" right="850.0" />
+                     </GridPane.margin>
+                  </JFXTextField>
+                  <JFXTreeTableView fx:id="ordersTbl" GridPane.rowIndex="1">
+                     <columns>
+                        <TreeTableColumn fx:id="orderId" prefWidth="137.0" text="Order ID" />
+                        <TreeTableColumn fx:id="date" prefWidth="153.0" text="Date" />
+                        <TreeTableColumn fx:id="amount" prefWidth="183.0" text="Amount" />
+                        <TreeTableColumn fx:id="custName" prefWidth="346.0" text="Customer Name" />
+                        <TreeTableColumn fx:id="option" prefWidth="164.0" text="Option" />
+                     </columns>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" />
+                     </GridPane.margin>
+                  </JFXTreeTableView>
+                  <JFXTreeTableView fx:id="orderDetailsTbl" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                     <columns>
+                        <TreeTableColumn fx:id="itemCode" prefWidth="157.0" text="Item Code" />
+                        <TreeTableColumn fx:id="itemName" prefWidth="265.0" text="Name" />
+                        <TreeTableColumn fx:id="qty" prefWidth="144.0" text="Qty" />
+                        <TreeTableColumn fx:id="unitPrice" prefWidth="209.0" text="Unit Price" />
+                        <TreeTableColumn fx:id="total" prefWidth="208.0" text="Total" />
+                     </columns>
+                  </JFXTreeTableView>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>
