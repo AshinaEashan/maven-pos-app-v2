@@ -1,8 +1,8 @@
-package dao.impl;
+package dao.custom.impl;
 
 import db.DBConnection;
 import dto.OrderDto;
-import dao.OrderModel;
+import dao.custom.OrderDao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,8 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderModelImpl implements OrderModel {
-    OrderDetailModelImpl OrderDetailModel = new OrderDetailModelImpl();
+public class OrderDaoImpl implements OrderDao {
+    OrderDetailDaoImpl OrderDetailModel = new OrderDetailDaoImpl();
 
     @Override
     public boolean saveOrder(OrderDto dto) throws SQLException, ClassNotFoundException {

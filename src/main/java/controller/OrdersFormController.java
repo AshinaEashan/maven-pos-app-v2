@@ -1,25 +1,24 @@
 package controller;
 
-import com.jfoenix.controls.JFXButton;
+import bo.custom.CustomerBo;
+import bo.custom.impl.CustomerBoImpl;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import dao.CustomerModel;
-import dao.ItemModel;
-import dao.OrderDetailsModel;
-import dao.OrderModel;
-import dao.impl.CustomerModelImpl;
-import dao.impl.ItemModelImpl;
-import dao.impl.OrderDetailModelImpl;
-import dao.impl.OrderModelImpl;
+import dao.custom.CustomerDao;
+import dao.custom.ItemDao;
+import dao.custom.OrderDetailsDao;
+import dao.custom.OrderDao;
+import dao.custom.impl.CustomerDaoImpl;
+import dao.custom.impl.ItemDaoImpl;
+import dao.custom.impl.OrderDetailDaoImpl;
+import dao.custom.impl.OrderDaoImpl;
 import dto.CustomerDto;
 import dto.ItemDto;
 import dto.OrderDetailsDto;
 import dto.OrderDto;
-import dto.tm.ItemTm;
 import dto.tm.OrderDetailsTm;
-import dto.tm.OrderTm;
 import dto.tm.OrdersTm;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -72,12 +71,12 @@ public class OrdersFormController {
     @FXML
     private TreeTableColumn total;
 
-    OrderDetailsModel orderDetailsModel = new OrderDetailModelImpl();
+    OrderDetailsDao orderDetailsDao = new OrderDetailDaoImpl();
 
-    OrderModel orderModel = new OrderModelImpl();
+    OrderDao orderDao = new OrderDaoImpl();
 
-    CustomerModel customerModel = new CustomerModelImpl();
-    ItemModel itemModel = new ItemModelImpl();
+    private CustomerBo customerBo = new CustomerBoImpl();
+    ItemDao itemDao = new ItemDaoImpl();
     List<OrderDetailsDto> orderDetails;
 
     ObservableList<OrdersTm> orderTable ;
@@ -124,7 +123,7 @@ public class OrdersFormController {
 
     private void loadOrderDetailsTable(OrdersTm order) {
         try {
-            List<ItemDto> itemDetails = itemModel.allItem();
+            List<ItemDto> itemDetails = itemDao.allItem();
             ObservableList<OrderDetailsTm> orderDetailsTable = FXCollections.observableArrayList();
 
             for (OrderDetailsDto detailsDto: orderDetails) {
@@ -164,9 +163,9 @@ public class OrdersFormController {
 
         try {
              orderTable = FXCollections.observableArrayList();
-            List<OrderDto> orders = orderModel.allOrders();
-            orderDetails = orderDetailsModel.getAllOrderDetails();
-            List<CustomerDto> customerDtos = customerModel.allCustomers();
+            List<OrderDto> orders = orderDao.allOrders();
+            orderDetails = orderDetailsDao.getAllOrderDetails();
+            List<CustomerDto> customerDtos = customerBo.allCustomers();
 
 
 
@@ -218,7 +217,7 @@ public class OrdersFormController {
     private void deleteOrder(String orderID)  {
         try {
             refreshBtn();
-            boolean isDeleted =  orderModel.deleteOrder(orderID);
+            boolean isDeleted =  orderDao.deleteOrder(orderID);
             if (isDeleted){
 
                 new Alert(Alert.AlertType.INFORMATION,"Item Deleted!").show();

@@ -1,5 +1,7 @@
 package controller;
 
+import bo.custom.CustomerBo;
+import bo.custom.impl.CustomerBoImpl;
 import com.jfoenix.controls.JFXTextField;
 import dto.CustomerDto;
 import dto.tm.CustomerTm;
@@ -13,8 +15,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import dao.CustomerModel;
-import dao.impl.CustomerModelImpl;
+import dao.custom.CustomerDao;
+import dao.custom.impl.CustomerDaoImpl;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -55,7 +57,7 @@ public class CustomerFormController {
 
     @FXML
     private TableColumn colOption;
-    private CustomerModel customerModel = new CustomerModelImpl();
+    private CustomerBo<CustomerDto> customerBo = new CustomerBoImpl();
 
     public void initialize(){
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -84,7 +86,7 @@ public class CustomerFormController {
         ObservableList<CustomerTm> tmList = FXCollections.observableArrayList();
 
         try {
-            List<CustomerDto> dtoList = customerModel.allCustomers();
+            List<CustomerDto> dtoList = customerBo.allCustomers();
             
             for (CustomerDto dto : dtoList){
                 Button btn = new Button("Delete");
@@ -121,7 +123,7 @@ public class CustomerFormController {
     }
     private void deleteCustomer(String id) {
         try {
-            boolean isDeleted = customerModel.deleteCustomer(id);
+            boolean isDeleted = customerBo.deleteCustomer(id);
             if (isDeleted){
                 new Alert(Alert.AlertType.INFORMATION,"Customer Deleted!").show();
                 loadCustomerTable();
@@ -161,7 +163,7 @@ public class CustomerFormController {
             new Alert(Alert.AlertType.ERROR,"Fields are Empty").show();
         }
         try {
-            boolean isSaved = customerModel.saveCustomer(new CustomerDto(
+            boolean isSaved = customerBo.saveCustomer(new CustomerDto(
                     customerIDText.getText(),
                     customerNameText.getText(),
                     customerAddressText.getText(),
@@ -188,7 +190,7 @@ public class CustomerFormController {
     @FXML
     void UpdateButtonOnAction(ActionEvent event) {
         try {
-            boolean isUpdated = customerModel.updateCustomer(new CustomerDto(
+            boolean isUpdated = customerBo.updateCustomer(new CustomerDto(
                     customerIDText.getText(),
                     customerNameText.getText(),
                     customerAddressText.getText(),

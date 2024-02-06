@@ -16,8 +16,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import dao.ItemModel;
-import dao.impl.ItemModelImpl;
+import dao.custom.ItemDao;
+import dao.custom.impl.ItemDaoImpl;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -62,7 +62,7 @@ public class ItemFormController {
     @FXML
     private TableColumn colOption;
 
-    private ItemModel itemModel = new ItemModelImpl();
+    private ItemDao itemDao = new ItemDaoImpl();
     private ObservableList<ItemTm> tmList;
     public void initialize(){
         colCode.setCellValueFactory(new PropertyValueFactory<>("code"));
@@ -100,7 +100,7 @@ public class ItemFormController {
 
     private void deleteCustomer(String code) {
         try {
-            boolean isDeleted = itemModel.deleteItem(code);
+            boolean isDeleted = itemDao.deleteItem(code);
             if (isDeleted){
                 new Alert(Alert.AlertType.INFORMATION,"Item Deleted!").show();
                 loadCustomerTable();
@@ -118,7 +118,7 @@ public class ItemFormController {
         tmList = FXCollections.observableArrayList();
 
         try {
-            List<ItemDto> dtoList = itemModel.allItem();
+            List<ItemDto> dtoList = itemDao.allItem();
 
             for (ItemDto dto : dtoList){
                 Button btn = new Button("Delete");
@@ -163,7 +163,7 @@ public class ItemFormController {
     @FXML
     void ItemSaveButtonOnAction(ActionEvent event) {
         try {
-            boolean isSaved = itemModel.saveItem(new ItemDto(
+            boolean isSaved = itemDao.saveItem(new ItemDto(
                     itemCodeTxt.getText(),
                     itesmDescTxt.getText(),
                     Double.parseDouble(itemUnitPriceTxt.getText()),
@@ -187,7 +187,7 @@ public class ItemFormController {
     @FXML
     void ItemUpdateButtonOnAction(ActionEvent event) {
         try {
-            boolean isUpdated = itemModel.updateItem(new ItemDto(
+            boolean isUpdated = itemDao.updateItem(new ItemDto(
                     itemCodeTxt.getText(),
                     itesmDescTxt.getText(),
                     Double.parseDouble(itemUnitPriceTxt.getText()),
