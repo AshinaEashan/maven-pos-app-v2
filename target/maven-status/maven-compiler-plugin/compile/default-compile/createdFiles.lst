@@ -1,6 +1,7 @@
 entity\Item.class
 controller\OrdersFormController.class
 controller\DashBoardFormController.class
+dao\util\BoType.class
 dto\tm\OrderDetailsTm.class
 dto\tm\CustomerTm.class
 dao\custom\impl\OrderDetailDaoImpl.class
@@ -25,6 +26,8 @@ entity\Customer.class
 dto\CustomerDto.class
 dto\ItemDto.class
 controller\CustomerFormController.class
+bo\BoFactory$1.class
+bo\BoFactory.class
 dao\custom\impl\CustomerDaoImpl.class
 dao\custom\OrderDao.class
 dto\OrderDetailsDto.class
